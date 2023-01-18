@@ -1,18 +1,15 @@
 // complete the given function
-function palindrome(str) {
-  // Good luck!
-  /* remove special characters, spaces and make lowercase*/
-  var removeChar = str.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+function isPalindrome(str) {
+    str = str.replace(/[^\w\d]/g, '').toLowerCase();
+    const len = str.length;
 
-  /* reverse removeChar for comparison*/
-  var checkPalindrome = removeChar.split('').reverse().join('');
+    for (let i = 0; i < len / 2; i++) {
+        if (str[i] !== str[len - 1 - i]) {
+            return false;
+        }
+    }
 
-  /* Check to see if str is a Palindrome*/
-   if(removeChar === checkPalindrome){
-     return true;
-   }else{
-     return false;
-   }
+    return true;
 }
 
 
