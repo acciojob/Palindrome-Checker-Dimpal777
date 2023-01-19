@@ -1,5 +1,4 @@
-// complete the given function
- function letterCombinations(input_digit) {
+function letterCombinations(input_digit) {
     //Complete the function
 
       let map = [0, 1, "abc" ,"def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
