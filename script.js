@@ -1,18 +1,38 @@
 // complete the given function
-function palindrome(str){
-    let s = str.toLowerCase().replace(/[^a-z0-9]/g, "");
-    return s === s.split("").reverse().join("");
-}
-console.log(isPalindrome("racecar")); // Output: true
-console.log(isPalindrome("RaceCar")); // Output: true
-console.log(isPalindrome("raceCAR")); // Output: true
-console.log(isPalindrome("hello")); // Output: false
-console.log(palindrome("racecar")); // Output: true
-console.log(palindrome("RaceCar")); // Output: true
-console.log(palindrome("raceCAR")); // Output: true
-console.log(palindrome("hello")); // Output: false
+ function letterCombinations(input_digit) {
+    //Complete the function
 
-module.exports = palindrome
+      let map = [0, 1, "abc" ,"def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+      let n = input_digit.length;
+  
+      let str = [];
+      for(let i=0; i<input_digit.length; i++){
+          let c = input_digit.charAt(i);
+          str[i] = map[Number(c)];
+      }
+        // console.log(str);
 
+        let ans = [];
 
+      let q = [];
+    
+      q.push("");
 
+      while(q.length > 0){
+        let s = q.shift();
+        
+        if(s.length == n){
+            ans.push(s);
+        }else{
+            let value = map[Number(input_digit.charAt(s.length))];
+            for(let j=0; j<value.length; j++){
+                q.push(s + value.charAt(j));
+            }
+        }
+
+      }
+
+      return ans;
+  }
+
+module.exports = letterCombinations;
