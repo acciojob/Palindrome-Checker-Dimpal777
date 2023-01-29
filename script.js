@@ -1,37 +1,29 @@
-function letterCombinations(input_digit) {
-    //Complete the function
-
-      let map = [0, 1, "abc" ,"def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
-      let n = input_digit.length;
-  
-      let str = [];
-      for(let i=0; i<input_digit.length; i++){
-          let c = input_digit.charAt(i);
-          str[i] = map[Number(c)];
-      }
-        // console.log(str);
-
-        let ans = [];
-
-      let q = [];
-    
-      q.push("");
-
-      while(q.length > 0){
-        let s = q.shift();
-        
-        if(s.length == n){
-            ans.push(s);
-        }else{
-            let value = map[Number(input_digit.charAt(s.length))];
-            for(let j=0; j<value.length; j++){
-                q.push(s + value.charAt(j));
-            }
+function palindrome(str) {
+    str = str.toLowerCase();
+    // Using Spread operator on string
+    let arr = [...str];
+    // console.log(arr);
+    let arrCopy = [...str];    // as reverse method also make changes to original array
+    let arrReverse = arr.reverse();
+        arr = arrCopy;
+    console.log(`reverseArray:${arrReverse}`);
+    console.log(`array:${arr}`);
+ 
+     for (let i = 0; i < arr.length; i++) {
+        if (arrCopy[i] != arrReverse[i]) { 
+            return false;
         }
-
-      }
-
-      return ans;
-  }
-
-module.exports = letterCombinations;
+    }
+ 
+    // Directly looping over a string
+    // var n = str.length;
+    // for (let i = 0; i < n / 2; i++) {
+    //     if (str[i] != str[n - i - 1]) { 
+    //         return false;
+    //     }
+    // }
+    return true;
+}
+ 
+console.log(palindrome("abc"))
+module.exports = palindrome
